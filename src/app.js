@@ -1,3 +1,5 @@
+import css from './index.scss'
+
 import { navbar } from './components'
 import { home } from './pages'
 
