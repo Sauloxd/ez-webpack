@@ -53,7 +53,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']), // Delete dist every build
     new HtmlWebpackPlugin({ // Creates an index.html with all srcs and links
-      alwaysWriteToDisk: true
+      alwaysWriteToDisk: true,
+      template: 'index.html'
     }),
     new HtmlWebpackHarddiskPlugin(), // Saves the in-memory bundle to disk
     extractSass
