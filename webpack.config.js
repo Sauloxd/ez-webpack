@@ -6,11 +6,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].[contenthash].css',
   disable: process.env.NODE_ENV === 'development'
 })
+
+const ASSET_PATH = process.env.ASSET_PATH || '/'
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
@@ -19,7 +22,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
+    publicPath: ASSET_PATH
   },
   module: {
     rules: [{
@@ -39,7 +43,7 @@ module.exports = {
       test: /\.pug$/,
       use: ['raw-loader', 'pug-html-loader']
     }, {
-      test: /\.(sass|scss)$/,
+      test: /\.scss$/,
       use: extractSass.extract({
         use: [{
           loader: 'to-string-loader'
@@ -51,6 +55,11 @@ module.exports = {
         // use style-loader in development
         fallback: 'style-loader'
       })
+    }, {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [
+        'file-loader'
+      ]
     }]
   },
   plugins: [
@@ -60,6 +69,10 @@ module.exports = {
       template: 'index.html'
     }),
     new HtmlWebpackHarddiskPlugin(), // Saves the in-memory bundle to disk
+    new CopyWebpackPlugin([ { from: 'assets', to: 'assets' } ]),
+    new webpack.DefinePlugin({
+      'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
+    }),
     extractSass
   ],
   devtool: 'source-map'
