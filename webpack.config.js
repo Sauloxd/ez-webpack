@@ -24,17 +24,20 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js$/,
-      exclude: /node_modules/, // Don't forget to exclude all non-trapilable js files! so it won't run slow
-      use: {
+      exclude: /node_modules/, // Don't forget to exclude all non-transpilable js files! so it won't run slow
+      use: [{
+        loader: 'ng-annotate-loader',
+        options: { es6: true }
+      }, {
         loader: 'babel-loader',
         options: {
           presets: ['env'],
           plugins: []
         }
-      }
+      }]
     }, {
       test: /\.pug$/,
-      use: ['pug-loader']
+      use: ['raw-loader', 'pug-html-loader']
     }, {
       test: /\.(sass|scss)$/,
       use: extractSass.extract({

@@ -1,10 +1,8 @@
-// optionally import bootstrap grid here
 import angular from 'angular'
-import { navbar } from './components'
+import uiRouter from '@uirouter/angularjs'
+import globalConfig from './app.config'
 import { home } from './pages'
 
-console.log('Main entry poing \(app.js\) LOADED!')
-console.log(navbar)
-console.log(home)
-
-angular.module('elastiqx', [ home ])
+console.log('Main entry poing \(app.js\) LOADED! dep: ', home)
+angular.module('elastiqx', [ uiRouter, home ])
+  .config(globalConfig)

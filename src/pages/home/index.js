@@ -1,11 +1,8 @@
 import angular from 'angular'
-import template from './home.pug'
-import css from './home.scss'
 import { navbar } from '../../components'
+import * as home from './home'
 
 export default angular.module('elastiqx.home', [ navbar ])
-  .controller('ctrl', () => {
-    console.log('home! :)')
-  }).name
-
-
+  .component('home', home.component)
+  .config(home.config)
+  .name
