@@ -1,3 +1,3 @@
-export default function ($urlRouterProvider) {
+export default ['$urlRouterProvider', $urlRouterProvider =>
   $urlRouterProvider.otherwise('/home')
-}
+]

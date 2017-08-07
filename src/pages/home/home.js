@@ -1,12 +1,12 @@
 import css from './home.scss'
 import template from './home.pug'
 
-const config = $stateProvider =>
+const config = ['$stateProvider', $stateProvider =>
   $stateProvider.state({
     name: 'home',
     url: '/home',
     component: 'home'
-  })
+  })]
 
 const component = {
   template,
@@ -15,4 +15,6 @@ const component = {
   }
 }
 
-export { config, component }
+console.log('config is ',config)
+
+export { config , component }

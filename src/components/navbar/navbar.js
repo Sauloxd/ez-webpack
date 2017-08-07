@@ -1,3 +1,6 @@
+import template from './navbar.pug'
+import css from './navbar.scss'
+
 const component = {
   template,
   bindings: {
