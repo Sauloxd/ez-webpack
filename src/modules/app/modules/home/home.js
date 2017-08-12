@@ -8,5 +8,4 @@ const component = {
   }
 }
 
-
 export { component }

@@ -4,14 +4,10 @@
   "description": "Simplest Webpack Possible",
   "main": "webpack.config.js",
   "dependencies": {
-    "@uirouter/angularjs": "^1.0.5",
-    "@uirouter/dsr": "^1.0.2",
-    "@uirouter/sticky-states": "^1.4.1",
-    "@uirouter/visualizer": "^4.0.2",
-    "angular": "^1.6.5",
-    "oclazyload": "^1.1.0"
+    "angular": "^1.6.5"
   },
   "devDependencies": {
+    "@uirouter/visualizer": "^4.0.2",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
@@ -31,6 +27,7 @@
     "style-loader": "^0.18.2",
     "to-string-loader": "^1.1.5",
     "webpack": "^3.4.1",
+    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.6.1"
   },
   "scripts": {

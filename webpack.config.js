@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].[contenthash].css',
@@ -18,17 +19,7 @@ const ASSET_PATH = process.env.ASSET_PATH || '/'
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
-    app: './bootstrap/bundler-entry-point.js',
-
-    vendor: [
-      'angular',
-      'oclazyload',
-      '@uirouter/core',
-      '@uirouter/angularjs',
-      '@uirouter/visualizer',
-      '@uirouter/sticky-states',
-      '@uirouter/dsr'
-    ]
+    app: './bootstrap/bundler-entry-point.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -65,11 +56,6 @@ module.exports = {
         // use style-loader in development
         fallback: 'style-loader'
       })
-    }, {
-      test: /\.(png|svg|jpg|gif)$/,
-      use: [
-        'file-loader'
-      ]
     }]
   },
   plugins: [
@@ -83,7 +69,14 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
     }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'static'
+    // }),
     extractSass
   ],
-  devtool: 'source-map'
+  externals: {
+    angular: 'angular'
+  },
+  devtool: 'cheap-eval-source-map'
 }
+

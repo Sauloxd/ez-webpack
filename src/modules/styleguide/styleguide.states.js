@@ -1,11 +1,7 @@
 export const styleguideState = {
   name: 'styleguide',
   url: '/styleguide',
-  component: 'styleguide',
-  deepStateRedirect: {
-    default: { state: 'styleguide.components' }
-  },
-  sticky: true
+  component: 'styleguide'
 }
 
 export const styleguideComponentsState = {

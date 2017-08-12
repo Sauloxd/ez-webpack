@@ -8,6 +8,7 @@
  */
 authHookRunBlock.$inject = ['$transitions', 'AuthService']
 export default function authHookRunBlock($transitions, AuthService) {
+  console.log('authHookRunBlock is running!')
   // Matches if the destination state's data property has a truthy 'requiresAuth' property
   let requiresAuthCriteria = {
     to: (state) => state.data && state.data.requiresAuth
