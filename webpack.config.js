@@ -18,7 +18,17 @@ const ASSET_PATH = process.env.ASSET_PATH || '/'
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
-    app: './app.js'
+    app: './bootstrap/bundler-entry-point.js',
+
+    vendor: [
+      'angular',
+      'oclazyload',
+      '@uirouter/core',
+      '@uirouter/angularjs',
+      '@uirouter/visualizer',
+      '@uirouter/sticky-states',
+      '@uirouter/dsr'
+    ]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

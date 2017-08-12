@@ -5,7 +5,11 @@
   "main": "webpack.config.js",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.5",
-    "angular": "^1.6.5"
+    "@uirouter/dsr": "^1.0.2",
+    "@uirouter/sticky-states": "^1.4.1",
+    "@uirouter/visualizer": "^4.0.2",
+    "angular": "^1.6.5",
+    "oclazyload": "^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

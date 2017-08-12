@@ -1,0 +1,3 @@
+.sg-sidebar-container
+  .sg-sidebar-item(ng-repeat='subState in $ctrl.subStates', ui-sref='{{ subState.state }}' ui-sref-active="-active")
+    | {{ subState.name }}
